@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('../common/head.ejs')%>
+
+  <body id="page-top">
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+      <!-- Sidebar -->
+      <%- include('../common/sidebar.ejs')%>
+      <!-- End of Sidebar -->
+
+      <!-- Content Wrapper -->
+      <div id="content-wrapper" class="d-flex flex-column">
+        <!-- Main Content -->
+        <div id="content">
+          <!-- Topbar -->
+          <%- include('../common/navbar.ejs')%>
+          <!-- End of Topbar -->
+
+          <!-- Begin Page Content -->
+          <div class="container-fluid">
+            <% if (sucess && sucess != '') { %>
+            <div
+              class="alert alert-success"
+              role="alert"
+              style="
+                position: absolute;
+                top: 50px;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 50%;
+                text-align: center;
+                background-color: #d4edda;
+                color: #155724;
+                border: 1px solid #c3e6cb;
+                border-radius: 5px;
+                padding: 10px;
+                z-index: 1000;
+              "
+            >
+              <%= sucess %>
+            </div>
+            <% } else if (err && err != '') { %>
+            <div
+              class="alert alert-danger"
+              role="alert"
+              style="
+                position: absolute;
+                top: 50px;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 50%;
+                text-align: center;
+                background-color: #f8d7da;
+                color: #721c24;
+                border: 1px solid #f5c6cb;
+                border-radius: 5px;
+                padding: 10px;
+                z-index: 1000;
+              "
+            >
+              <%= err %>
+            </div>
+            <% } %>
+
+            <!-- Admin Profile Area -->
+            <div class="profile-card" style="background: linear-gradient(135deg, #ff9a9e, #fad0c4); border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); padding: 40px; text-align: center; max-width: 600px; margin: 50px auto;">
+              <img src="http://localhost:3004/<%=user.image%>" alt="Profile Picture" style="border-radius: 50%; width: 150px; height: 150px; object-fit: cover; border: 5px solid white; box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); margin-bottom: 20px;" />
+              <h2 style="font-size: 24px; font-weight: bold; color: #333;">Welcome, <%= user.first_name %></h2>
+              <p style="font-size: 16px; color: #555;">Role: <span style="font-weight: bold; color: #007bff"><%= user.role || 'Admin' %></span></p>
+              <p style="font-size: 16px; color: #555;">Email: <span style="font-weight: bold; color: #007bff"><%= user.email %></span></p>
+              <a href="<%= generateUrl('logout') %>" style="display: inline-block; padding: 12px 25px; background-color: #dc3545; color: #fff; font-weight: bold; border-radius: 5px; text-decoration: none; margin-top: 20px; transition: 0.3s;">Logout</a>
+            </div>
+          </div>
+          <!-- /.container-fluid -->
+        </div>
+        <!-- End of Main Content -->
+
+        <!-- Footer -->
+        <%- include('../common/footer.ejs')%>
+        <!-- End of Footer -->
+      </div>
+      <!-- End of Content Wrapper -->
+    </div>
+    <!-- End of Page Wrapper -->
+
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+      <i class="fas fa-angle-up"></i>
+    </a>
+
+    <!-- Logout Modal-->
+    <%- include('../common/logoutModal.ejs')%>
+
+    <!-- JS file area-->
+    <%- include('../common/vanilajs.ejs')%>
+  </body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('../common/head.ejs')%>
+  <body id="page-top" style="background: linear-gradient(135deg, #667eea, #764ba2); color: white; font-family: Arial, sans-serif;">
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+      <!-- Sidebar -->
+      <%- include('../common/sidebar.ejs')%>
+      <!-- End of Sidebar -->
+
+      <!-- Content Wrapper -->
+      <div id="content-wrapper" class="d-flex flex-column">
+        <!-- Main Content -->
+        <div id="content">
+          <!-- Topbar -->
+          <%- include('../common/navbar.ejs')%>
+          <!-- End of Topbar -->
+
+          <!-- Begin Page Content -->
+          <div class="container-fluid d-flex justify-content-center align-items-center" style="min-height: 100vh;">
+            <div class="card shadow-lg p-5" style="max-width: 500px; width: 100%; border-radius: 10px; background: white; color: black;">
+              <h2 class="text-center text-primary">🖼️ Edit Banner</h2>
+              <!-- Flash Messages -->
+              <% if (sucess && sucess != '') { %>
+              <div class="alert alert-success text-center"> <%= sucess %> </div>
+              <% } else if (err && err != '') { %>
+              <div class="alert alert-danger text-center"> <%= err %> </div>
+              <% } %>
+
+              <form action="<%= generateUrl('updatebanner', { id: banner._id }) %>" method="POST" enctype="multipart/form-data">
+                <!-- Title Field -->
+                <div class="form-group">
+                  <label for="title" class="font-weight-bold">Title</label>
+                  <input type="text" id="title" name="title" class="form-control" value="<%= banner.title %>" placeholder="Enter banner title" required>
+                </div>
+
+                <!-- Subtitle Field -->
+                <div class="form-group mt-3">
+                  <label for="subtitle" class="font-weight-bold">Subtitle</label>
+                  <input type="text" id="subtitle" name="subtitle" class="form-control" value="<%= banner.subtitle %>" placeholder="Enter banner subtitle" required>
+                </div>
+
+                <!-- Image Upload Field -->
+                <% if (banner.image) { %>
+                <div class="text-center mt-3">
+                  <label class="font-weight-bold">Current Image</label>
+                  <img src="http://localhost:3004/<%= banner.image %>" alt="Banner Image" class="rounded shadow" style="max-width: 150px; display: block; margin: 10px auto;">
+                </div>
+                <% } %>
+                <div class="form-group mt-3">
+                  <label for="image" class="font-weight-bold">Upload New Image</label>
+                  <input type="file" class="form-control" id="image" name="image" accept="image/*">
+                  <small class="form-text text-muted text-danger">If left empty, the current image will be retained.</small>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="btn btn-primary btn-block mt-4">✔️ Update Banner</button>
+              </form>
+            </div>
+          </div>
+          <!-- /.container-fluid -->
+        </div>
+        <!-- End of Main Content -->
+
+        <!-- Footer -->
+        <%- include('../common/footer.ejs')%>
+        <!-- End of Footer -->
+      </div>
+      <!-- End of Content Wrapper -->
+    </div>
+    <!-- End of Page Wrapper -->
+
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+      <i class="fas fa-angle-up"></i>
+    </a>
+
+    <!-- Logout Modal-->
+    <%- include('../common/logoutModal.ejs')%>
+
+    <!-- JS file area-->
+    <%- include('../common/vanilajs.ejs')%>
+  </body>
+</html>

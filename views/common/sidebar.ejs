@@ -1,0 +1,96 @@
+<ul
+  class="navbar-nav sidebar sidebar-dark accordion"
+  id="accordionSidebar"
+  style="background: linear-gradient(135deg, #6a11cb, #2575fc)"
+>
+  <!-- Sidebar - Brand -->
+  <a
+    class="sidebar-brand d-flex align-items-center justify-content-center text-white"
+    href="<%=generateUrl('profile')%>"
+  >
+    <div class="sidebar-brand-icon rotate-n-15">
+      <i class="fas fa-user-shield"></i>
+    </div>
+    <div class="sidebar-brand-text mx-3"><%= user.first_name %> Admin 🚀</div>
+  </a>
+
+  <!-- Divider -->
+  <hr class="sidebar-divider my-0 bg-light" />
+
+  <!-- Nav Item - Dashboard -->
+  <li class="nav-item active">
+    <a class="nav-link text-white" href="<%=generateUrl('admindashboard')%>">
+      <i class="fas fa-fw fa-tachometer-alt"></i>
+      <span>Dashboard</span></a
+    >
+  </li>
+
+  <!-- Divider -->
+  <hr class="sidebar-divider bg-light" />
+
+  <!-- Nav Item - Pages Collapse Menu -->
+  <li class="nav-item">
+    <a
+      class="nav-link collapsed text-white"
+      href="#"
+      data-toggle="collapse"
+      data-target="#collapsePages"
+      aria-expanded="true"
+      aria-controls="collapsePages"
+    >
+      <i class="fas fa-fw fa-folder"></i>
+      <span>Pages</span>
+    </a>
+    <div
+      id="collapsePages"
+      class="collapse"
+      aria-labelledby="headingPages"
+      data-parent="#accordionSidebar"
+    >
+      <div class="bg-white py-2 collapse-inner rounded">
+        <a class="collapse-item" href="<%=generateUrl('bannerlist')%>"
+          >📢 Banner</a
+        >
+        <a class="collapse-item" href="<%=generateUrl('categorylist')%>"
+          >📂 Categories</a
+        >
+        <a class="collapse-item" href="<%=generateUrl('subcategorylist')%>"
+          >📁 Subcategories</a
+        >
+        <a class="collapse-item" href="<%=generateUrl('brandlist')%>"
+          >🏷️ Brand</a
+        >
+        <a class="collapse-item" href="<%=generateUrl('productlist')%>"
+          >🛍️ Product</a
+        >
+      </div>
+    </div>
+  </li>
+
+  <!-- Nav Item - Orders -->
+  <li class="nav-item">
+    <a class="nav-link text-white" href="<%=generateUrl('allorderlist')%>">
+      <i class="fa fa-receipt"></i>
+      <span>📦 Orders</span></a
+    >
+  </li>
+
+  <!-- Nav Item - Registrations -->
+  <li class="nav-item">
+    <a class="nav-link text-white" href="<%=generateUrl('registrationlist')%>">
+      <i class="fa fa-user-plus"></i>
+      <span>👥 Registrations</span></a
+    >
+  </li>
+
+  <!-- Divider -->
+  <hr class="sidebar-divider d-none d-md-block bg-light" />
+
+  <!-- Sidebar Toggler (Sidebar) -->
+  <div class="text-center d-none d-md-inline">
+    <button
+      class="rounded-circle border-0 bg-light"
+      id="sidebarToggle"
+    ></button>
+  </div>
+</ul>

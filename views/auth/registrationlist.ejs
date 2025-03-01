@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('../common/head.ejs')%>
+
+  <body id="page-top">
+    <div id="wrapper">
+      <%- include('../common/sidebar.ejs')%> 
+      <div id="content-wrapper" class="d-flex flex-column">
+        <div id="content">
+          <%- include('../common/navbar.ejs')%>
+
+          <div class="container-fluid">
+            <% if (sucess && sucess != '') { %>
+            <div class="alert alert-success alert-dismissible fade show text-center" role="alert">
+              <%= sucess %>
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <% } else if (err && err != '') { %>
+            <div class="alert alert-danger alert-dismissible fade show text-center" role="alert">
+              <%= err %>
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <% } %>
+
+            <div class="card shadow-lg mb-4">
+              <div class="card-header bg-primary text-white d-flex justify-content-between">
+                <h6 class="m-0 font-weight-bold">Total Registrations: <%= registrations.length %></h6>
+              </div>
+              <div class="card-body">
+                <div class="table-responsive">
+                  <table class="table table-hover table-bordered text-center">
+                    <thead class="bg-dark text-white">
+                      <tr>
+                        <th>Picture</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Email</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <% registrations.slice(0,registrations.length).reverse().forEach((value) => { %>
+                      <tr>
+                        <td>
+                          <img src="http://localhost:3004/<%= value.image %>" alt="User Image" class="rounded-circle" style="height: 60px; width: 60px; border: 2px solid #ddd; padding: 2px;">
+                        </td>
+                        <td class="align-middle"><%= value.first_name %></td>
+                        <td class="align-middle"><%= value.last_name %></td>
+                        <td class="align-middle"><%= value.email %></td>
+                      </tr>
+                      <% }) %>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <%- include('../common/footer.ejs')%>
+      </div>
+    </div>
+
+    <a class="scroll-to-top rounded" href="#page-top">
+      <i class="fas fa-angle-up"></i>
+    </a>
+
+    <%- include('../common/logoutModal.ejs')%>
+    <%- include('../common/vanilajs.ejs')%>
+  </body>
+</html>

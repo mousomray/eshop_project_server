@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('../common/head.ejs')%>
+  <body
+    id="page-top"
+    style="
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: white;
+      font-family: Arial, sans-serif;
+    "
+  >
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+      <!-- Sidebar -->
+      <%- include('../common/sidebar.ejs')%>
+      <!-- End of Sidebar -->
+
+      <!-- Content Wrapper -->
+      <div id="content-wrapper" class="d-flex flex-column">
+        <!-- Main Content -->
+        <div id="content">
+          <!-- Topbar -->
+          <%- include('../common/navbar.ejs')%>
+          <!-- End of Topbar -->
+
+          <!-- Begin Page Content -->
+          <div
+            class="container-fluid d-flex justify-content-center align-items-center"
+            style="min-height: 100vh"
+          >
+            <div
+              class="card shadow-lg p-5"
+              style="
+                max-width: 600px;
+                width: 100%;
+                border-radius: 10px;
+                background: white;
+                color: black;
+              "
+            >
+              <h2 class="text-center text-primary">🛍️ Add Product</h2>
+              <!-- Flash Messages -->
+              <% if (sucess && sucess != '') { %>
+              <div class="alert alert-success text-center"><%= sucess %></div>
+              <% } else if (err && err != '') { %>
+              <div class="alert alert-danger text-center"><%= err %></div>
+              <% } %>
+
+              <form
+                action="<%= generateUrl('addproductcreate') %>"
+                method="POST"
+                enctype="multipart/form-data"
+              >
+                <!-- Title Field -->
+                <div class="form-group">
+                  <label for="title" class="font-weight-bold">Title</label>
+                  <input
+                    type="text"
+                    id="title"
+                    name="title"
+                    class="form-control"
+                    placeholder="Enter product title"
+                    required
+                  />
+                </div>
+
+                <!-- Description Field -->
+                <div class="form-group">
+                  <label for="description" class="font-weight-bold"
+                    >Description</label
+                  >
+                  <textarea
+                    class="form-control"
+                    rows="4"
+                    name="description"
+                    id="description"
+                    placeholder="Enter product description"
+                    required
+                  >
+                  </textarea>
+                </div>
+
+                <!-- Brand Dropdown -->
+                <div class="form-group">
+                  <label for="brandId" class="font-weight-bold">Brand</label>
+                  <select
+                    id="brandId"
+                    name="brandId"
+                    class="form-control"
+                    required
+                  >
+                    <option value="" disabled selected>
+                      -- Select Brand --
+                    </option>
+                    <% brands.forEach(brand => { %>
+                    <option value="<%= brand._id %>"><%= brand.name %></option>
+                    <% }); %>
+                  </select>
+                </div>
+
+                <!-- Category Dropdown -->
+                <div class="form-group">
+                  <label for="categoryId" class="font-weight-bold"
+                    >Category</label
+                  >
+                  <select
+                    id="categoryId"
+                    name="categoryId"
+                    class="form-control"
+                    required
+                  >
+                    <option value="" disabled selected>
+                      -- Select Category --
+                    </option>
+                    <% categories.forEach(category => { %>
+                    <option value="<%= category._id %>">
+                      <%= category.name %>
+                    </option>
+                    <% }); %>
+                  </select>
+                </div>
+
+                <!-- Subcategory Dropdown -->
+                <div class="form-group">
+                  <label for="subcategoryId" class="font-weight-bold"
+                    >Subcategory</label
+                  >
+                  <select
+                    id="subcategoryId"
+                    name="subcategoryId"
+                    class="form-control"
+                    required
+                  >
+                    <option value="" disabled selected>
+                      -- Select Subcategory --
+                    </option>
+                    <% subcategories.forEach(subcat => { %>
+                    <option
+                      value="<%= subcat._id %>"
+                      data-category="<%= subcat.categoryId %>"
+                    >
+                      <%= subcat.subname %>
+                    </option>
+                    <% }); %>
+                  </select>
+                </div>
+
+                <!-- Price Field -->
+                <div class="form-group">
+                  <label for="price" class="font-weight-bold">Price</label>
+                  <input
+                    type="number"
+                    id="price"
+                    name="price"
+                    class="form-control"
+                    placeholder="Enter product price"
+                    required
+                  />
+                </div>
+
+                <!-- Image Upload Field -->
+                <div class="form-group">
+                  <label for="image" class="font-weight-bold"
+                    >Upload Image</label
+                  >
+                  <input
+                    type="file"
+                    id="image"
+                    name="image"
+                    class="form-control"
+                    accept="image/*"
+                    required
+                  />
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="btn btn-primary btn-block mt-4">
+                  ➕ Add Product
+                </button>
+              </form>
+            </div>
+          </div>
+          <!-- /.container-fluid -->
+        </div>
+        <!-- End of Main Content -->
+
+        <!-- Footer -->
+        <%- include('../common/footer.ejs')%>
+        <!-- End of Footer -->
+      </div>
+      <!-- End of Content Wrapper -->
+    </div>
+    <!-- End of Page Wrapper -->
+
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+      <i class="fas fa-angle-up"></i>
+    </a>
+
+    <!-- Logout Modal-->
+    <%- include('../common/logoutModal.ejs')%>
+
+    <!-- JS file area-->
+    <%- include('../common/vanilajs.ejs')%>
+    <script>
+      ClassicEditor.create(document.querySelector("#description")).catch(
+        (error) => {
+          console.error(error);
+        }
+      );
+    </script>
+    <!-- JavaScript to Filter Subcategories Based on Selected Category -->
+    <script>
+      document
+        .getElementById("categoryId")
+        .addEventListener("change", function () {
+          let selectedCategory = this.value;
+          let subcategoryDropdown = document.getElementById("subcategoryId");
+
+          subcategoryDropdown.value = "";
+
+          for (let option of subcategoryDropdown.options) {
+            if (option.value === "") continue;
+            option.style.display =
+              option.getAttribute("data-category") === selectedCategory
+                ? "block"
+                : "none";
+          }
+        });
+    </script>
+  </body>
+</html>

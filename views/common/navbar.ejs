@@ -1,0 +1,48 @@
+<nav class="navbar navbar-expand navbar-light topbar mb-4 static-top shadow" style="background: linear-gradient(135deg, #ff7eb3, #ff758c);">
+  <!-- Sidebar Toggle (Topbar) -->
+  <button id="sidebarToggleTop" class="btn btn-light d-md-none rounded-circle mr-3">
+    <i class="fa fa-bars"></i>
+  </button>
+
+  <!-- Topbar Search -->
+  <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search" action="<%= generateUrl('searchproduct') %>" method="GET">
+    <div class="input-group">
+      <input type="text" class="form-control border-0 small" placeholder="🔍 Search products..." aria-label="Search" name="title" aria-describedby="basic-addon2" style="background: #fff5f8; border-radius: 20px; padding: 10px;">
+      <div class="input-group-append">
+        <button class="btn btn-light" type="submit" style="border-radius: 20px;">
+          <i class="fas fa-search text-dark"></i>
+        </button>
+      </div>
+    </div>
+  </form>
+
+  <!-- Topbar Navbar -->
+  <ul class="navbar-nav ml-auto">
+    <div class="topbar-divider d-none d-sm-block"></div>
+
+    <% if(user){%>
+    <li class="nav-item dropdown no-arrow">
+      <a class="nav-link dropdown-toggle text-white" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <span class="mr-2 d-none d-lg-inline small" style="color: #fff;"><%=user.first_name%></span>
+        <img class="img-profile rounded-circle" src="http://localhost:3004/<%=user.image%>" style="border: 2px solid #fff;">
+      </a>
+      <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in">
+        <a class="dropdown-item" href="<%= generateUrl('profile')%>">
+          <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+          Profile
+        </a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="<%= generateUrl('updatepassword')%>">
+          <i class="fas fa-key fa-sm fa-fw mr-2 text-gray-400"></i>
+          Update Password
+        </a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="<%= generateUrl('logout') %>">
+          <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+          Logout
+        </a>
+      </div>
+    </li>
+    <% }%>
+  </ul>
+</nav>

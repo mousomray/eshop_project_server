@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('../common/head.ejs')%>
+  <body id="page-top" style="background: linear-gradient(135deg, #667eea, #764ba2); color: white; font-family: Arial, sans-serif;">
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+      <!-- Sidebar -->
+      <%- include('../common/sidebar.ejs')%>
+      <!-- End of Sidebar -->
+
+      <!-- Content Wrapper -->
+      <div id="content-wrapper" class="d-flex flex-column">
+        <!-- Main Content -->
+        <div id="content">
+          <!-- Topbar -->
+          <%- include('../common/navbar.ejs')%>
+          <!-- End of Topbar -->
+
+          <!-- Begin Page Content -->
+          <div class="container-fluid">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+              <h2 class="text-black" style="color: black;">🛒 Product List</h2>
+              <a href="<%= generateUrl('addproduct')%>" class="btn btn-primary shadow-sm">➕ Add Product</a>
+            </div>
+
+            <!-- Flash Messages -->
+            <% if (sucess && sucess != '') { %>
+            <div class="alert alert-success text-center"> <%= sucess %> </div>
+            <% } else if (err && err != '') { %>
+            <div class="alert alert-danger text-center"> <%= err %> </div>
+            <% } %>
+
+            <!-- DataTales Example -->
+            <div class="card shadow-lg mb-4">
+              <div class="card-header bg-primary text-white py-3">
+                <h6 class="m-0 font-weight-bold">Total Products: <%= products.length %></h6>
+              </div>
+              <div class="card-body">
+                <div class="table-responsive">
+                  <table class="table table-bordered table-hover text-center" id="dataTable" width="100%" cellspacing="0">
+                    <thead class="bg-dark text-white">
+                      <tr>
+                        <th>Image</th>
+                        <th>Title</th>
+                        <th>Description</th>
+                        <th>Brand</th>
+                        <th>Category</th>
+                        <th>Subcategory</th>
+                        <th>Status</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <% products.slice(0,products.length).reverse().forEach((value) =>{ %>
+                      <tr class="bg-light">
+                        <td><img src="http://localhost:3004/<%=value.image%>" alt="" class="rounded" style="height: 80px; width: 80px; object-fit: cover; border: 4px solid #ddd; padding: 5px; box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1); border-radius: 10px;"></td>
+                        <td class="font-weight-bold"><%= value.title %></td>
+                        <td class="text-muted"><%- value.description %></td>
+                        <td class="text-primary font-weight-bold"><%= value.branddetails.name %></td>
+                        <td class="text-success font-weight-bold"><%= value.categorydetails.name %></td>
+                        <td class="text-warning font-weight-bold"><%= value.subcategorydetails.subname %></td>
+                        <td>
+                          <a href="<%= generateUrl('toggleproductactive', { id: value._id }) %>" class="btn <%= value.active ? 'btn-warning' : 'btn-success' %>">
+                            <%= value.active ? 'Active' : 'Deactive' %>
+                          </a>
+                        </td>
+                        <td>
+                          <a href="<%= generateUrl('editproduct', { id: value._id }) %>" class="btn btn-info">✏️ Edit</a>
+                        </td>
+                        <td>
+                          <a href="<%= generateUrl('deleteproduct', { id: value._id }) %>" class="btn btn-danger">🗑️ Delete</a>
+                        </td>
+                      </tr>
+                      <% }) %>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- /.container-fluid -->
+        </div>
+        <!-- End of Main Content -->
+
+        <!-- Footer -->
+        <%- include('../common/footer.ejs')%>
+        <!-- End of Footer -->
+      </div>
+      <!-- End of Content Wrapper -->
+    </div>
+    <!-- End of Page Wrapper -->
+
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+      <i class="fas fa-angle-up"></i>
+    </a>
+
+    <!-- Logout Modal-->
+    <%- include('../common/logoutModal.ejs')%>
+
+    <!-- JS file area-->
+    <%- include('../common/vanilajs.ejs')%>
+  </body>
+</html>
