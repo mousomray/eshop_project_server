@@ -17,7 +17,7 @@ class productApiController {
 
             const products = await ProductRepo.getActiveProducts(page, limit);
             res.status(200).json({
-                message: "Product retrieved successfully",
+                message: "Product retrieved successfully", 
                 products,
                 pagination: {
                     page,
@@ -258,7 +258,7 @@ class productApiController {
                 return res.status(400).json({ message: "User ID is required" });
             }
             if (!shippingAddress || !shippingAddress.address || !shippingAddress.city || !shippingAddress.zipCode || !shippingAddress.country || !shippingAddress.paymentmethod) {
-                return res.status(400).json({ message: "Complete shipping address is required" });
+                return res.status(400).json({ message: "Complete shipping address is required" }); 
             }
             const order = await ProductRepo.placeOrder(userId, shippingAddress);
             res.status(201).json({

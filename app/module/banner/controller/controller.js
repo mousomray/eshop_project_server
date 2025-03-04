@@ -89,7 +89,7 @@ class bannerAdminController {
                 req.flash('err', 'All fields are required')
                 return res.redirect(generateUrl('editbanner', { id }));
             }
-            if (title.length && subtitle.length < 3) {
+            if (title.length || subtitle.length < 3) {
                 req.flash('err', 'Title and Subtitle mustbe atleast 3 characters long')
                 return res.redirect(generateUrl('editbanner', { id }));
             }

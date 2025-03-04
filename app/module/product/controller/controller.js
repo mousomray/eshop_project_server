@@ -149,7 +149,7 @@ class productAdminController {
             };
             // Update the blog
             await ProductRepo.updateproduct(id, productData);
-            console.log(`Blog with ID ${id} updated`);
+            console.log(`Product with ID ${id} updated`);
             req.flash('sucess', 'Product updated successfully');
             return res.redirect(generateUrl('productlist'));
         } catch (error) {
