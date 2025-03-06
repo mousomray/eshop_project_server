@@ -8,26 +8,18 @@
         <div id="content">
           <%- include('../common/navbar.ejs')%>
           <div class="container-fluid">
-            <div
-              class="d-sm-flex align-items-center justify-content-between mb-4"
-            >
+            <div class="d-sm-flex align-items-center justify-content-between mb-4">
               <h1 class="h3 mb-0 text-gray-800">Welcome To Admin Dashboard</h1>
             </div>
-
+            
             <div class="row">
               <div class="col-xl-3 col-md-6 mb-4">
                 <div class="card border-left-primary shadow h-100 py-2">
                   <div class="card-body">
                     <div class="row no-gutters align-items-center">
                       <div class="col mr-2">
-                        <div
-                          class="text-xs font-weight-bold text-primary text-uppercase mb-1"
-                        >
-                          Total Orders
-                        </div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">
-                          <%=orders.length%>
-                        </div>
+                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Total Orders</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800"><%=orders.length%></div>
                       </div>
                       <div class="col-auto">
                         <i class="fas fa-shopping-cart fa-2x text-gray-300"></i>
@@ -42,14 +34,8 @@
                   <div class="card-body">
                     <div class="row no-gutters align-items-center">
                       <div class="col mr-2">
-                        <div
-                          class="text-xs font-weight-bold text-success text-uppercase mb-1"
-                        >
-                          Total Products
-                        </div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">
-                          <%=products.length%>
-                        </div>
+                        <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Total Products</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800"><%=products.length%></div>
                       </div>
                       <div class="col-auto">
                         <i class="fas fa-box fa-2x text-gray-300"></i>
@@ -64,14 +50,8 @@
                   <div class="card-body">
                     <div class="row no-gutters align-items-center">
                       <div class="col mr-2">
-                        <div
-                          class="text-xs font-weight-bold text-warning text-uppercase mb-1"
-                        >
-                          Total Users
-                        </div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">
-                          <%=registers.length%>
-                        </div>
+                        <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Total Users</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800"><%=registers.length%></div>
                       </div>
                       <div class="col-auto">
                         <i class="fas fa-users fa-2x text-gray-300"></i>
@@ -86,14 +66,8 @@
                   <div class="card-body">
                     <div class="row no-gutters align-items-center">
                       <div class="col mr-2">
-                        <div
-                          class="text-xs font-weight-bold text-danger text-uppercase mb-1"
-                        >
-                          Total Categories
-                        </div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">
-                          <%=categories.length%>
-                        </div>
+                        <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Total Categories</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800"><%=categories.length%></div>
                       </div>
                       <div class="col-auto">
                         <i class="fas fa-tags fa-2x text-gray-300"></i>
@@ -108,14 +82,8 @@
                   <div class="card-body">
                     <div class="row no-gutters align-items-center">
                       <div class="col mr-2">
-                        <div
-                          class="text-xs font-weight-bold text-info text-uppercase mb-1"
-                        >
-                          Total Subcategories
-                        </div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">
-                          <%=subcategories.length%>
-                        </div>
+                        <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Total Subcategories</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800"><%=subcategories.length%></div>
                       </div>
                       <div class="col-auto">
                         <i class="fas fa-th-list fa-2x text-gray-300"></i>
@@ -130,14 +98,8 @@
                   <div class="card-body">
                     <div class="row no-gutters align-items-center">
                       <div class="col mr-2">
-                        <div
-                          class="text-xs font-weight-bold text-secondary text-uppercase mb-1"
-                        >
-                          Total Brands
-                        </div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">
-                          <%=brands.length%>
-                        </div>
+                        <div class="text-xs font-weight-bold text-secondary text-uppercase mb-1">Total Brands</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800"><%=brands.length%></div>
                       </div>
                       <div class="col-auto">
                         <i class="fas fa-briefcase fa-2x text-gray-300"></i>
@@ -155,6 +117,7 @@
     <a class="scroll-to-top rounded" href="#page-top">
       <i class="fas fa-angle-up"></i>
     </a>
+    
     <%- include('../common/vanilajs.ejs')%>
   </body>
 </html>
