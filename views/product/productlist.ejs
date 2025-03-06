@@ -54,7 +54,7 @@
                     <tbody>
                       <% products.slice(0,products.length).reverse().forEach((value) =>{ %>
                       <tr class="bg-light">
-                        <td><img src="http://localhost:3004/<%=value.image%>" alt="" class="rounded" style="height: 80px; width: 80px; object-fit: cover; border: 4px solid #ddd; padding: 5px; box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1); border-radius: 10px;"></td>
+                        <td><img src="https://eshop-project-server.onrender.com/<%=value.image%>" alt="" class="rounded" style="height: 80px; width: 80px; object-fit: cover; border: 4px solid #ddd; padding: 5px; box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1); border-radius: 10px;"></td>
                         <td class="font-weight-bold"><%= value.title %></td>
                         <td class="text-muted"><%- value.description %></td>
                         <td class="text-primary font-weight-bold"><%= value.branddetails.name %></td>
