@@ -7,3 +7,6 @@ Password: 8420462790
 
 # Admin Panel Link
 https://eshop-project-server.onrender.com/admin/login 
+
+# Frontend source code
+https://github.com/mousomray/eshop_project_client
